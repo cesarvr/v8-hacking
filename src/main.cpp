@@ -37,20 +37,7 @@ class ArrayBufferAllocator : public v8::ArrayBuffer::Allocator {
 };
 
 
-int main(){
-  // Initialize V8.
-  V8::InitializeICU();
-  //V8::InitializeExternalStartupData(argv[0]);
-  Platform* platform = platform::CreateDefaultPlatform();
-  V8::InitializePlatform(platform);
-  V8::Initialize();
-
-  // Create a new Isolate and make it the current one.
-  ArrayBufferAllocator allocator;
-  Isolate::CreateParams create_params;
-  create_params.array_buffer_allocator = &allocator;
-  Isolate* isolate = Isolate::New(create_params);
-  {
+void exec(Isolate *isolate){
     Isolate::Scope isolate_scope(isolate);
 
     // Create a stack-allocated handle scope.
@@ -76,7 +63,24 @@ int main(){
     // Convert the result to an UTF8 string and print it.
     String::Utf8Value utf8(result);
     Print(" result --->", *utf8);
-  }
+}
+
+int main(){
+  // Initialize V8.
+  V8::InitializeICU();
+  //V8::InitializeExternalStartupData(argv[0]);
+  Platform* platform = platform::CreateDefaultPlatform();
+  V8::InitializePlatform(platform);
+  V8::Initialize();
+
+  // Create a new Isolate and make it the current one.
+  ArrayBufferAllocator allocator;
+  Isolate::CreateParams create_params;
+  create_params.array_buffer_allocator = &allocator;
+  Isolate* isolate = Isolate::New(create_params);
+  
+
+  exec(isolate); 
 
   // Dispose the isolate and tear down V8.
   isolate->Dispose();
