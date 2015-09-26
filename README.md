@@ -15,8 +15,13 @@ instruction tested only in linux.
 $ ln -s path/v8 deps/v8
 ```
 - In root directory you can find the Makefile with a basic configuration to compile and link C++ with a Embedded V8. 
-  Just need to do make and generate the binary in the bin/ folder.
+  
+- to compile and link just do. 
+```sh
+make
+```
 
+- happy hacking! :).
  
 
 [Google Developer]: <https://cesarvr.github.io>
