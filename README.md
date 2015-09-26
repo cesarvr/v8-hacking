@@ -8,7 +8,10 @@ instruction tested only in linux.
 
  - download the source code from https://developers.google.com/v8/build. 
  - build/install.
- - git clone git@github.com:cesarvr/v8-hacking.git. 
+
+```sh
+$ git clone git@github.com:cesarvr/v8-hacking.git
+```
  - go to deps folder and make a symlink to your v8 folder. 
 
 ```sh
