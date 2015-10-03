@@ -4,5 +4,5 @@
   };
 
   fibonacci(12);
-  //print( 'fibonacci->' , fibonacci(11) );
+  print( 'fibonacci->' , fibonacci(11) );
 }());

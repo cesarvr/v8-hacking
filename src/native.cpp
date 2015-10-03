@@ -17,6 +17,7 @@ using namespace v8;
 
 // native endpoint
 v8::Handle<v8::Context> CreatePlugins(v8::Isolate* isolate);
+void Printl(const v8::FunctionCallbackInfo<v8::Value>& args); 
 
 
 /* Variadic template for printing value */
@@ -75,7 +76,7 @@ void vm(Isolate *isolate, char *jsFile){
 
     // Convert the result to an UTF8 string and print it.
     String::Utf8Value utf8(result);
-    Print(" result --->", *utf8);
+    Print(" \n ", *utf8);
 }
 
 int main(int argc, char *argv[]){
@@ -101,7 +102,6 @@ int main(int argc, char *argv[]){
   char *jsFile = NULL; 
 
   jsFile = readFile(argv[1]);
-  printf("js-> %s", jsFile);
   vm(isolate, jsFile); 
 
   // Dispose the isolate and tear down V8.
@@ -127,7 +127,7 @@ v8::Handle<v8::Context> CreatePlugins(v8::Isolate* isolate) {
   
 
   global->Set(v8::String::NewFromUtf8(isolate, "print"),
-              v8::FunctionTemplate::New(isolate, Print));
+              v8::FunctionTemplate::New(isolate, Printl));
 
   
   return v8::Context::New(isolate, NULL, global);
@@ -136,6 +136,16 @@ v8::Handle<v8::Context> CreatePlugins(v8::Isolate* isolate) {
 
 
 
+void Printl(const v8::FunctionCallbackInfo<v8::Value>& args) {
+  printf("[native]: ");
 
+  for(int i = 0; i<args.Length(); i++){
+    
+    v8::HandleScope handle_scope(args.GetIsolate());
+    auto argument = args[i];
+    v8::String::Utf8Value str(argument);
+    printf("%s ", *str);  
+  }
+}
 
 

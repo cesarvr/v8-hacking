@@ -20,11 +20,18 @@ $ ln -s path/v8 deps/v8
 - In root directory you can find the Makefile with a basic configuration to compile and link C++ with a Embedded V8. 
   
 - to compile and link just do. 
+
 ```sh
-make
+make hello
 ```
 
-- happy hacking! :).
+- to compile the example with native binding do.
+
+```sh
+make native
+```
+
+- happy hacking!.
  
 
 [Google Developer]: <https://cesarvr.github.io>
