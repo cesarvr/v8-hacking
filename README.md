@@ -18,12 +18,9 @@ $ git clone git@github.com:cesarvr/v8-hacking.git
 ```sh
 $ ln -s path/v8 deps/v8
 ```
-- In root directory you can find the Makefile with a basic configuration to compile and link C++ with a Embedded V8. 
-  
-- to compile and link just do. 
-
-
+* In root directory you can find the Makefile with a basic configuration to compile and link C++ with a Embedded V8. 
 * this is just a hello world with C++ program with V8 embedded. to build it just do: 
+
 ```sh
 make hello
 ```
@@ -44,6 +41,5 @@ make native
 
 
 - happy hacking!.
- 
-
+- 
 [Google Developer]: <https://cesarvr.github.io>
